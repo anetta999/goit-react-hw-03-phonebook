@@ -59,7 +59,7 @@ export const AddBtn = styled.button`
 
   transition: background-color 250ms ease-in;
 
-  &:hover {
+  &:is(:hover, :focus) {
     background-color: #4f2ee8;
   }
 `;

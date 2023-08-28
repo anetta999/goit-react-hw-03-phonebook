@@ -8,11 +8,31 @@ import { GlobalStyle } from './Globalstyle';
 import { Container } from './Container';
 import { StyledNotification } from './Notification.styled';
 
+const LS_KEY = 'contacts';
+
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const contacts = localStorage.getItem(LS_KEY);
+    const parsedContacts = JSON.parse(contacts);
+
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const currentContacts = this.state.contacts;
+    const prevContacts = prevState.contacts;
+
+    if (currentContacts !== prevContacts) {
+      localStorage.setItem(LS_KEY, JSON.stringify(currentContacts));
+    }
+  }
 
   addContact = newContact => {
     const isContactInList = this.state.contacts.some(

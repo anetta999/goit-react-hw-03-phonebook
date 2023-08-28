@@ -16,7 +16,16 @@ export const DeleteBtn = styled.button`
 
   transition: background-color 250ms ease-in;
 
-  &:hover {
+  &:is(:hover, :focus) {
     background-color: #4f2ee8;
   }
+`;
+
+export const ContactsText = styled.p`
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.33;
+  letter-spacing: -0.18px;
+  text-transform: uppercase;
 `;
